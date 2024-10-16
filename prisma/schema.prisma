@@ -27,11 +27,14 @@ model User {
 
 model Movie {
   id    Int  @id @default(autoincrement())
-  name  String
-  movie_rent MovieRent[]
+  title        String      @unique
+  duration     Int
+  release_date DateTime
+  movie_rent   MovieRent[]
 
   @@map("movies")
 }
+
 
 model MovieRent {
   user    User  @relation(fields: [userId], references: [id])
